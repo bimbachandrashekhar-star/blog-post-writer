@@ -1,0 +1,26 @@
+outline_architect_task:
+  description: >
+    Develop a comprehensive H2/H3 markdown outline for a technical blog post covering the topic: "{topic}".
+    Ensure the layout includes a hook-driven introduction, logical progression of core technical pillars, and an actionable conclusion.
+  expected_output: >
+    A well-structured markdown document representing only the outline of the blog post.
+  agent: outline_architect
+
+section_writer_task:
+  description: >
+    Using the outline provided by the outline_architect, write the full content of the blog post.
+    Flesh out every H2 and H3 section. Include clear definitions, realistic code example place-holders if applicable, and technical depth. Do not use generic filler words.
+  expected_output: >
+    The complete raw draft of the technical blog post containing all written sections.
+  agent: section_writer
+
+seo_editor_task:
+  description: >
+    Review the raw technical blog post draft from section_writer_task.
+    1. Optimize sentence length and word choice for readability.
+    2. Add a compelling Meta Title and Meta Description at the very top.
+    3. Identify 2-3 logical internal link anchor text opportunities.
+    4. Pass the final post content through the ReadabilityScorer tool and append the returned readability score at the very bottom of the document.
+  expected_output: >
+    A production-ready technical blog post formatted in markdown with metadata at the top and a readability assessment score at the bottom.
+  agent: seo_editor
